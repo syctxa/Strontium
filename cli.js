@@ -1,8 +1,8 @@
 const print = console.log
 const fs = require("fs")
 
-const menprotect = require('./menprotect')
-const obfuscator = new menprotect()
+const SwagcryptOBF = require('./strontium')
+const obfuscator = new SwagcryptOBF()
 
 obfuscator.obfuscate({
     script: fs.readFileSync("./Script.lua", {encoding: "binary"}),
