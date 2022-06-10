@@ -1,21 +1,21 @@
 {
-  "name": "menprotect",
-  "version": "1.0.0",
-  "description": "Lua 5.1 Obfuscator",
+  "name": "strontium",
+  "version": "0.2.0",
+  "description": "Lua 5.x/LuaU Obfuscator based in Swagcrypt",
   "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Singularity5490/menprotect.git"
+    "url": "git+https://github.com/soyandrey/Strontium.git"
   },
   "author": "Singularity & Stroketon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Singularity5490/menprotect/issues"
+    "url": "https://github.com/soyandrey/Strontium/issues"
   },
-  "homepage": "https://github.com/Singularity5490/menprotect#readme",
+  "homepage": "https://github.com/soyandrey/Strontium/",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
