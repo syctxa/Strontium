@@ -1,8 +1,8 @@
 {
   "name": "strontium",
-  "version": "0.2.0",
-  "description": "Lua 5.x/LuaU Obfuscator based in Swagcrypt",
-  "main": "cli.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,17 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/soyandrey/Strontium.git"
   },
-  "author": "Singularity & Stroketon",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/soyandrey/Strontium/issues"
   },
-  "homepage": "https://github.com/soyandrey/Strontium/",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "luaparse": "^0.3.0",
-    "math-float64-ldexp": "^1.0.1",
-    "randomstring": "^1.1.5"
-  }
+  "homepage": "https://github.com/soyandrey/Strontium#readme"
 }

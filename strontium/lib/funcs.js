@@ -19,7 +19,7 @@ module.exports = class funcs {
         this.deserialize = require('./funcs/deserialize')
         this.reserialize = require('./funcs/reserialize')
         this.build_vm = require('./funcs/build_vm')
-        this.sets = { version: '0.2', stringcom: 'join to get free swin discord.gg/PUBAjfDBEc'}
+        this.sets = { version: '0.2', stringcom: 'Strontium Fork of Swagcrypt ==>discord.gg/PUBAjfDBEc<=='}
 
         this.encrypt = function(s, k) {
             let cs = ''

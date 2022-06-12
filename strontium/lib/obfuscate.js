@@ -110,7 +110,7 @@ module.exports = function(options) {
 
         script += source // Add script back
         if (options.debug) {
-            fs.writeFileSync('./menprotect/ast.lua', script)
+            fs.writeFileSync('./strontium/ast.lua', script)
         };
     } catch (err) {
         return log(`${err.toString()}`, 3)
@@ -139,52 +139,6 @@ module.exports = function(options) {
         let beay = funcs.beautify(vm,{RenameVariables:true})
         state("Minifying and adding memestrings")
         let vmin = funcs.luamin2(beay,{})
-        state("AntiBeautify")
-        function makeid(length) {
-            var result           = '';
-            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            var charactersLength = characters.length;
-            for ( var i = 0; i < length; i++ ) {
-               result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            }
-            return `SR_${result}`;
-         }
-        if (specified_options.antibeautify == true) {
-            let abgd = makeid(80)
-            var AB= `local function getTraceback()
-            local str = (function(arg)
-                return debug.traceback(arg)
-            end)("${abgd}");
-            return str;
-        end
-        
-        local traceback = getTraceback();
-        valid = valid and traceback:sub(1, traceback:find("\n") - 1) == "${abgd}";
-        local iter = traceback:gmatch(":(%d*):");
-        local v, c = iter(), 1;
-        for i in iter do
-            valid = valid and i == v;
-            c = c + 1;
-        end
-        valid = valid and c >= 2;`/*funcs.luamin2(funcs.beautify(`local function getTraceback()
-            local str = (function(arg)
-                return debug.traceback(arg)
-            end)("${abgd}");
-            return str;
-        end
-        
-        local traceback = getTraceback();
-        valid = valid and traceback:sub(1, traceback:find("\n") - 1) == "${abgd}";
-        local iter = traceback:gmatch(":(%d*):");
-        local v, c = iter(), 1;
-        for i in iter do
-            valid = valid and i == v;
-            c = c + 1;
-        end
-        valid = valid and c >= 2;`,{RenameVariables:true}),{})*/
-        } else {
-            var AB=''
-        }
         state("Markig script")
         let wts = `
 --[[
@@ -202,8 +156,7 @@ module.exports = function(options) {
          
 ]]--
 _${stats.fingerprint} = "${funcs.sets.stringcom}"
-${vmin}
-${AB}`
+${vmin}`
 
         // print(funcs._2C(bytecode))
         // print(funcs._2C(mp_bytecode))
