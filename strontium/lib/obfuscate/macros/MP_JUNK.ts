@@ -2,12 +2,11 @@ const __options = {
     max: 10,
 }
 
-const print = console.log
 
 const functions = require('../../funcs')
 const funcs = new functions()
 
-function gRandom(n) {
+function gRandom(n?: any) {
     n = n || 10
     return Math.floor(Math.random() * 10) + 5
 }
@@ -68,7 +67,7 @@ function gJunk() {
 }
 
 module.exports = {
-    handler: function(chunk) {
+    handler: function(chunk:any) {
         let args = chunk.arguments
         let arg = args[0]
     

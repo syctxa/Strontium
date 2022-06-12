@@ -1,5 +1,3 @@
-const print = console.log
-
 const gRan = `
 ((function()
 local function xor(a,b)

@@ -1,6 +1,27 @@
-const print = console.log
-
+interface setd{
+    version: string,
+    stringcom: string
+}
 module.exports = class funcs {
+    xor: Function
+    compile: Function
+    _2C: Function
+    get_mili_time: Function
+    convertstream: Function
+    randomstring: Function
+    luamin2: Function
+    beautify: Function
+    tohex: Function
+
+    minify: Function
+    parse: Function
+    deserialize: Function
+    reserialize: Function
+    build_vm : Function
+    sets:  setd
+
+    encrypt: Function
+    overwrite_chunk: Function
     constructor() {
         this.xor = require('./funcs/xor')
         this.compile = require('./funcs/compile')
@@ -10,7 +31,7 @@ module.exports = class funcs {
         this.randomstring = require('randomstring').generate
         this.luamin2 = require("./funcs/luamin2.js").Minify
         this.beautify = require("./funcs/luamin.js").Beautify
-        this.tohex = function(string) {
+        this.tohex = function(string: string) {
             return Buffer.from(string, 'utf8').toString('hex');
         }
 
@@ -21,7 +42,7 @@ module.exports = class funcs {
         this.build_vm = require('./funcs/build_vm')
         this.sets = { version: '0.2', stringcom: 'Strontium Fork of Swagcrypt ==>discord.gg/PUBAjfDBEc<=='}
 
-        this.encrypt = function(s, k) {
+        this.encrypt = function(s:any, k:any) {
             let cs = ''
             for (let i = 0; i < s.length; i++) {
                 cs += String.fromCharCode(this.xor(s.charCodeAt(i), k))
@@ -29,33 +50,11 @@ module.exports = class funcs {
             return cs
         }
 
-        this.overwrite_chunk = function(old_chunk, new_chunk) {
+        this.overwrite_chunk = function(old_chunk:any, new_chunk:any) {
             Object.keys(new_chunk).forEach(function(index) {
                 let value = new_chunk[index]
                 old_chunk[index] = value
             })
         }
-
-        { // Mutation handler
-
-            let connections = {}
-            this.mutation_handler = function(mutations, handle) {
-                if (!mutations[handle]) mutations[handle] = {
-                    connect: function(callback) { // Mutation connect function
-                        if (!connections[handle]) connections[handle] = [] // Create mutation type expression index
-                        connections[handle].push(callback) // Push callback function
-                    },
-                    fire: function(chunk) {
-                        if (connections[handle]) {
-                            connections[handle].forEach(function(value) {
-                                value(chunk)
-                            })
-                        }
-                    },
-                }
-            }
-
-        }
-
     }
 }

@@ -1,5 +1,3 @@
-const print = console.log
-
 const functions = require('../../funcs')
 const funcs = new functions()
 
@@ -18,10 +16,25 @@ const poles = {
         ['/']: '*',
     }
 }
-
+let connections = {}
+mutation_handler = function(mutations, handle) {
+    if (!mutations[handle]) mutations[handle] = {
+        connect: function(callback) { // Mutation connect function
+            if (!connections[handle]) connections[handle] = [] // Create mutation type expression index
+            connections[handle].push(callback) // Push callback function
+        },
+        fire: function(chunk) {
+            if (connections[handle]) {
+                connections[handle].forEach(function(value) {
+                    value(chunk)
+                })
+            }
+        },
+    }
+}
 module.exports = {
     init: function(mutations) {
-        funcs.mutation_handler(mutations, handle) // Init mutation
+        mutation_handler(mutations, handle) // Init mutation
         mutations[handle].connect(function(data) { // Mutation handler
 
             let options = data.options

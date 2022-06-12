@@ -1,5 +1,3 @@
-const print = console.log
-
 const functions = require('../../funcs')
 const funcs = new functions()
 

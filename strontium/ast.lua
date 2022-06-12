@@ -32,7 +32,7 @@ local ID = X:sub(10, #X)
 
 local cs = ''
 for i = 1, #ID do
-    cs = cs .. xor(string.byte(ID:sub(i, i)), 83)
+    cs = cs .. xor(string.byte(ID:sub(i, i)), 81)
 end
 
 return cs:sub(2, 9)

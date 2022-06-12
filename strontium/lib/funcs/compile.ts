@@ -2,7 +2,7 @@ const randomstring = require('randomstring').generate
 const { spawn } = require('child_process')
 const fs = require('fs')
 
-module.exports = function(script) {
+module.exports = function(script:string) {
     return new Promise(function(resolve, reject) {
         let Files = [
             `${randomstring(5)}.lua`,
